@@ -1,2 +1,2 @@
 # w65c816sxb-cdemo
-A Demo C Program for the WDC W65C816 SXB Development Board
+This repository contains a demonstration C program for the WDC W65C816 SXB development board. It contains a custom start up module and 

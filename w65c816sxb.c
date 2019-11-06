@@ -57,7 +57,7 @@ static volatile fifo_t  rx;
 static volatile fifo_t  tx;
 
 /* An incrementing counter */
-static uint32_t         ticks;
+static volatile uint32_t ticks;
 
 /* Initialise the SXB board hardware */
 void initialise (void)

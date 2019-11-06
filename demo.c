@@ -43,7 +43,7 @@ int main (int argc, char **argv)
 	}
 	puts ("\n\n");
 
-	printf ("W65C816SXD Echo Demo\n");
+	printf ("W65C816SXB Echo Demo\n");
 	printf ("Type some characters:\n");
 	
 	/* Echo I/O */

@@ -1,5 +1,24 @@
 /*============================================================================*
+ * __        ____  ____   ____ ____  _                                        *
+ * \ \      / / /_| ___| / ___|___ \/ |                                       *
+ *  \ \ /\ / / '_ \___ \| |     __) | |                                       *
+ *   \ V  V /| (_) |__) | |___ / __/| |                                       *
+ *    \_/\_/  \___/____/ \____|_____|_|                                       *
+ *                                                                            *
  * Peripheral Interface Adapter (PIA) Definitions                             *
+ *----------------------------------------------------------------------------*
+ * Copyright (C),2019 Andrew Jacobs                                           *
+ * All rights reserved.                                                       *
+ *                                                                            *
+ * This work is made available under the terms of the Creative Commons        *
+ * Attribution-NonCommercial-ShareAlike 4.0 International license. Open the   *
+ * following URL to see the details.                                          *
+ *                                                                            *
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/                          *
+ *                                                                            *
+ *============================================================================*
+ * Notes:                                                                     *
+ *                                                                            *
  *----------------------------------------------------------------------------*/
 
 #ifndef _W65C21_H
@@ -7,42 +26,30 @@
 
 #include <inttypes.h>
 
-typedef union {
-    struct {
-        uint8_t             b0 : 1;
-        uint8_t             b1 : 1;
-        uint8_t             b2 : 1;
-        uint8_t             b3 : 1;
-        uint8_t             b4 : 1;
-        uint8_t             b5 : 1;
-        uint8_t             b6 : 1;
-        uint8_t             b7 : 1;
-    }                   bits;
-    uint8_t             data;
-} pia_data_t;
+#define PIA_CRA_CA1_MASK        0x03
+#define PIA_CRA_DDRA_MASK       0x04
+#define PIA_CRA_CA2_MASK        0x38
+#define PIA_CRA_IRQA2_MASK      0x40
+#define PIA_CRA_IRQA1_MASK      0x80
 
-typedef union {
-    struct {
-        uint8_t             b0 : 1;
-        uint8_t             b1 : 1;
-        uint8_t             b2 : 1;
-        uint8_t             b3 : 1;
-        uint8_t             b4 : 1;
-        uint8_t             b5 : 1;
-        uint8_t             b6 : 1;
-        uint8_t             b7 : 1;
-    }                   bits;
-    uint8_t             data;
-} pia_ctrl_t;
+
+#define PIA_CRB_CB1_MASK        0x03
+#define PIA_CRB_DDRB_MASK       0x04
+#define PIA_CRB_CB2_MASK        0x38
+#define PIA_CRB_IRQB2_MASK      0x40
+#define PIA_CRB_IRQB1_MASK      0x80
+
 
 typedef struct {
     uint8_t             pia;
-    pia_ctrl_t          cra;
+    uint8_t             cra;
     uint8_t             pib;
-    pia_ctrl_t          crb;
+    uint8_t             crb;
 } pia_t;
 
-#define VIA_PIA(VIA)    ((VIA) -> cra.b2 = 1, (VIA) -> pia)
-#define VIA_ORA(VIA)    ((VIA) -> cra.b2 = 0, (VIA) -> pia)
+#define PIA_ORA(XX)     ((XX) -> cra &= ~PIA_CRA_DDRA_MASK),((XX) -> pia)
+#define PIA_DDRA(XX)    ((XX) -> cra |=  PIA_CRA_DDRA_MASK),((XX) -> pia)
+#define PIA_ORB(XX)     ((XX) -> crb &= ~PIA_CRB_DDRB_MASK),((XX) -> pib)
+#define PIA_DDRB(XX)    ((XX) -> crb |=  PIA_CRB_DDRB_MASK),((XX) -> pib)
 
 #endif

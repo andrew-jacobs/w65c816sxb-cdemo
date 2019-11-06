@@ -31,17 +31,24 @@
 
 int main (int argc, char **argv)
 {
-	int			fd = fileno(stdout);
+	int			count;
 
 	initialise ();
 
+	/* Timer test */
+	puts ("\nStarting");
+	for (count = 0; count < 5; ++count) {
+		putchar ('.');
+		delay (1000);
+	}
 	puts ("\n\n");
+
 	printf ("W65C816SXD Echo Demo\n");
 	printf ("Type some characters:\n");
 	
 	/* Echo I/O */
 	for (;;)
-		aciaTx (aciaRx (1));
+		putchar (getchar ());
 	
 	return (0);
 }

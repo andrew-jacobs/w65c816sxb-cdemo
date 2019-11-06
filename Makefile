@@ -25,20 +25,23 @@
 #
 #-------------------------------------------------------------------------------
 
-AS	=	wdc816as
+AS		=	wdc816as
 
 ASFLAGS	=	-G -LW
  
-CC	=	wdc816cc
+CC		=	wdc816cc
 
-#CCFLAGS	=	-BS -LW -SOP -MC -MK -MT -MU -MV -SS -PE -DUSING_816
-CCFLAGS	=	-BS -LW -SF -MS -PE -DUSING_816
+CCFLAGS	=	-BS $(OPTIM) $(MODEL) -DUSING_816
 
-LD	=	wdcln
+MODEL	= 	-MS
+
+OPTIM	= 	-SOP -PE
+
+LD		=	wdcln
 
 LDFLAGS	=	-G -T -C0300
 
-RM	=	erase
+RM		=	erase
 
 #-------------------------------------------------------------------------------
 
@@ -53,7 +56,7 @@ RM	=	erase
 
 ASMS	=	boot.asm
 
-SRCS	=	demo.c w65c816sxb.c
+SRCS	=	demo.c w65c816sxb.c stdio.c
 
 OBJS	=	$(ASMS:.asm=.obj) $(SRCS:.c=.obj)
 
@@ -69,6 +72,7 @@ clean:
 		$(RM) *.map
 		$(RM) *.sym
 		$(RM) *.tmp
+		$(RM) *.bnk
 
 demo.s28:	$(OBJS)
 	$(LD) -G -HM28 $(LDFLAGS) -O$@ $(OBJS) $(LIBS)
@@ -84,3 +88,4 @@ demo.obj:	demo.c w65c816sxb.h
 
 w65c816sxb.obj:	w65c816sxb.c w65c816sxb.h
 
+stdio.obj:	stdio.c w65c816sxb.h

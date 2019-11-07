@@ -32,6 +32,19 @@
 #define PIA_CRA_IRQA2_MASK      0x40
 #define PIA_CRA_IRQA1_MASK      0x80
 
+#define PIC_CRA_CA1_IN_NEG_DI   0x00
+#define PIC_CRA_CA1_IN_NEG_EN   0x01
+#define PIC_CRA_CA1_IN_POS_DI   0x02
+#define PIC_CRA_CA1_IN_POS_EN   0x03
+
+#define PIC_CRA_CA2_IN_NEG_DI   0x00
+#define PIC_CRA_CA2_IN_NEG_EN   0x08
+#define PIC_CRA_CA2_IN_POS_DI   0x10
+#define PIC_CRA_CA2_IN_POS_EN   0x18
+#define PIC_CRA_CA2_HANDSHAKE   0x20
+#define PIC_CRA_CA2_PULSE_OUT   0x28
+#define PIC_CRA_CA2_OUT_LO      0x30
+#define PIC_CRA_CA2_OUT_HI      0x38
 
 #define PIA_CRB_CB1_MASK        0x03
 #define PIA_CRB_DDRB_MASK       0x04
@@ -39,6 +52,19 @@
 #define PIA_CRB_IRQB2_MASK      0x40
 #define PIA_CRB_IRQB1_MASK      0x80
 
+#define PIC_CRB_CA1_IN_NEG_DI   0x00
+#define PIC_CRB_CA1_IN_NEG_EN   0x01
+#define PIC_CRB_CA1_IN_POS_DI   0x02
+#define PIC_CRB_CA1_IN_POS_EN   0x03
+
+#define PIC_CRB_CA2_IN_NEG_DI   0x00
+#define PIC_CRB_CA2_IN_NEG_EN   0x08
+#define PIC_CRB_CA2_IN_POS_DI   0x10
+#define PIC_CRB_CA2_IN_POS_EN   0x18
+#define PIC_CRB_CA2_HANDSHAKE   0x20
+#define PIC_CRB_CA2_PULSE_OUT   0x28
+#define PIC_CRB_CA2_OUT_LO      0x30
+#define PIC_CRB_CA2_OUT_HI      0x38
 
 typedef struct {
     uint8_t             pia;

@@ -112,6 +112,6 @@ typedef struct {
 #define ACIA_CMD(XX)        ((XX) -> cmd)
 #define ACIA_CTL(XX)        ((XX) -> ctl)
 
-#define aciaReset(XX)      { (XX) -> sr.data = 0x00; }
+#define aciaReset(XX)       { ACIA_SR (XX) = 0x00; }
 
 #endif
